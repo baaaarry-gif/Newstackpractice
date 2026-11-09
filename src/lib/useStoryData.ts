@@ -196,7 +196,19 @@ export function useStoryData(userId: string | undefined): StoryData {
           .filter((row) => toDelete.includes(row.id) && row.photo_path)
           .map((row) => row.photo_path as string);
 
-        if (toInsert.length) await supabase.from("memories").insert(toInsert);
+        if (toInsert.length) {
+  const { data, error } = await supabase
+    .from("memories")
+    .insert(toInsert)
+    .select();
+
+  if (error) {
+    console.error("MEMORY INSERT FAILED:", error);
+    alert(`Memory could not be saved: ${error.message}`);
+  } else {
+    console.log("MEMORY SAVED:", data);
+  }
+}
         if (toUpdate.length) {
           await Promise.all(
             toUpdate.map((row) =>
