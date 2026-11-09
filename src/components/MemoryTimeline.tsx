@@ -272,7 +272,7 @@ export function MemoryTimeline({
 
     {m.photoUrl.includes("cloudinary.com") && (
       <Star
-        className="absolute top-2 right-2 h-5 w-5 fill-yellow-400 text-yellow-400 drop-shadow-lg"
+        className="absolute top-2 right-2 h-1.5 w-1.5 fill-yellow-400 text-yellow-400 drop-shadow-lg"
         aria-label="Cloudinary photo"
       />
     )}
