@@ -14,6 +14,8 @@ import {
   ArrowLeft,
   ArrowRight,
   BookOpen,
+  Star,
+  
 } from "lucide-react";
 import { formatLongDate, parseDateInput, toDateInputValue } from "@/lib/dates";
 
@@ -261,12 +263,21 @@ export function MemoryTimeline({
                       )}
 
                       {m.photoUrl && (
-                        <img
-                          src={m.photoUrl}
-                          alt={`Photo for ${m.title}`}
-                          className="mt-3 w-full max-h-[600px] rounded-xl object-contain bg-black/20"
-                        />
-                      )}
+  <div className="relative mt-3">
+    <img
+      src={m.photoUrl}
+      alt={`Photo for ${m.title}`}
+      className="w-full max-h-[600px] rounded-xl object-contain bg-black/20"
+    />
+
+    {m.photoUrl.includes("cloudinary.com") && (
+      <Star
+        className="absolute top-2 right-2 h-5 w-5 fill-yellow-400 text-yellow-400 drop-shadow-lg"
+        aria-label="Cloudinary photo"
+      />
+    )}
+  </div>
+)}
 
                       <div className="mt-3 flex items-center gap-3 text-[11px] text-white/30">
                         <span className="flex items-center gap-1">
