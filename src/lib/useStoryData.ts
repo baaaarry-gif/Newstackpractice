@@ -341,7 +341,7 @@ function memoryToRow(userId: string) {
   return (m: Memory): MemoryRow => ({
     id: m.id,
     user_id: userId,
-    date: m.date,
+    date: m.date || null,
     title: m.title,
     notes: m.notes,
     milestone: !!m.milestone,
